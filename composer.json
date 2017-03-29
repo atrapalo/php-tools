@@ -1,0 +1,40 @@
+{
+  "name": "atrapalo/php-tools",
+  "description": "Several PHP 7 tools to make life a little easier",
+  "keywords": [
+    "enum",
+    "collection",
+    "camelcase",
+    "tools",
+    "php"
+  ],
+  "homepage": "https://github.com/atrapalo/php-tools",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Guillermo González",
+      "email": "guillermo.gonzalez@atrapalo.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "ext-reflection": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.7 || ^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Atrapalo\\PHPTools\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Atrapalo\\PHPTools\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "bin-dir": "bin/"
+  }
+}
