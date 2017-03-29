@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
  * Class EnumTest
  * @package Atrapalo\PHPTools\Tests\Enum
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 class EnumTest extends TestCase
 {

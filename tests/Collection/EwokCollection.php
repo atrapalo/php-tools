@@ -8,7 +8,7 @@ use Atrapalo\PHPTools\Collection\EntityCollection;
  * Class EwokCollection
  * @package Atrapalo\PHPTools\Tests\Collection
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 class EwokCollection extends EntityCollection
 {

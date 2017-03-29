@@ -1,8 +1,4 @@
 <?php
-/**
- * @link    http://github.com/myclabs/php-enum
- * @license http://www.opensource.org/licenses/mit-license.php MIT (see the LICENSE file)
- */
 
 namespace Atrapalo\PHPTools\Tests\Enum;
 
@@ -27,7 +23,7 @@ use Atrapalo\PHPTools\Enum\Enum;
  * @method bool isProblematicEmptyString()
  * @method bool isProblematicBooleanFalse()
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 class DeloreanClonedEnum extends Enum
 {

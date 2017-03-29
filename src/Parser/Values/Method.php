@@ -6,7 +6,7 @@ namespace Atrapalo\PHPTools\Parser\Values;
  * Class Method
  * @package Atrapalo\PHPTools\Parser\Values
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 class Method
 {

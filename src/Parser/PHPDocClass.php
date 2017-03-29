@@ -9,7 +9,7 @@ use Atrapalo\PHPTools\Parser\Values\Param;
  * Class PHPDocClass
  * @package Atrapalo\PHPTools\Parser
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 class PHPDocClass
 {

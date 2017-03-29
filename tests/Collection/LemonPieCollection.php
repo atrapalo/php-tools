@@ -8,7 +8,7 @@ use Atrapalo\PHPTools\Collection\EntityCollection;
  * Class LemonPieCollection
  * @package Atrapalo\PHPTools\Tests\Collection
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 class LemonPieCollection extends EntityCollection
 {

@@ -6,7 +6,7 @@ namespace Atrapalo\PHPTools\Collection;
  * Class EntityCollection
  * @package Atrapalo\PHPTools\Collection
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 abstract class EntityCollection implements \Countable, \Iterator
 {

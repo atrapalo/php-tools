@@ -8,7 +8,7 @@ use Atrapalo\PHPTools\Parser\PHPDocClass;
  * Class EnumPHPDocTester
  * @package Atrapalo\PHPTools\Enum
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 trait EnumPHPDocTester
 {

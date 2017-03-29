@@ -6,7 +6,7 @@ namespace Atrapalo\PHPTools\Collection;
  * Class EntityCollectionTester
  * @package Atrapalo\PHPTools\Collection
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 trait EntityCollectionTester
 {

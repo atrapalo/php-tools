@@ -6,7 +6,7 @@ namespace Atrapalo\PHPTools\Enum;
  * Class Enum
  * @package Atrapalo\PHPTools\Enum
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 abstract class Enum
 {

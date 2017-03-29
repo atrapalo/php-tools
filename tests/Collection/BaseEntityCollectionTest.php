@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  * Class BaseEntityCollectionTest
  * @package Atrapalo\PHPTools\Tests\Collection
  *
- * @author Guillermo Gonz·lez <guillermo.gonzalez@atrapalo.com>
+ * @author Guillermo Gonz√°lez <guillermo.gonzalez@atrapalo.com>
  */
 abstract class BaseEntityCollectionTest extends TestCase
 {
