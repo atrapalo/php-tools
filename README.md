@@ -1,4 +1,4 @@
-# php-tools
+# PHP Tools
 [![Build Status](https://travis-ci.org/Atrapalo/php-tools.svg?branch=master)](https://travis-ci.org/Atrapalo/php-tools)
 [![Code Coverage](https://scrutinizer-ci.com/g/Atrapalo/php-tools/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Atrapalo/php-tools/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Atrapalo/php-tools/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Atrapalo/php-tools/?branch=master)
