@@ -1,7 +1,7 @@
 # PHP Tools
-[![Build Status](https://travis-ci.org/Atrapalo/php-tools.svg?branch=master)](https://travis-ci.org/Atrapalo/php-tools)
-[![Code Coverage](https://scrutinizer-ci.com/g/Atrapalo/php-tools/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Atrapalo/php-tools/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Atrapalo/php-tools/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Atrapalo/php-tools/?branch=master)
+[![Build Status](https://travis-ci.org/atrapalo/php-tools.svg?branch=master)](https://travis-ci.org/atrapalo/php-tools)
+[![Code Coverage](https://scrutinizer-ci.com/g/atrapalo/php-tools/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/atrapalo/php-tools/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/atrapalo/php-tools/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/atrapalo/php-tools/?branch=master)
 
 Several PHP 7 tools to make life a little easier
 
