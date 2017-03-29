@@ -11,7 +11,7 @@ namespace Atrapalo\PHPTools\Collection;
 abstract class EntityCollection implements \Countable, \Iterator
 {
     /** @var array */
-    private $entities;
+    private $entities = array();
     /** @var bool */
     protected $allowEntitiesChildren;
 
