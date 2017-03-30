@@ -1,4 +1,7 @@
 # PHP Tools
+
+[![Latest Stable Version](https://img.shields.io/packagist/v/atrapalo/php-tools.svg)](https://packagist.org/packages/atrapalo/php-tools)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.0-8892bf.svg)](http://php.net/)
 [![Build Status](https://travis-ci.org/atrapalo/php-tools.svg?branch=master)](https://travis-ci.org/atrapalo/php-tools)
 [![Code Coverage](https://scrutinizer-ci.com/g/atrapalo/php-tools/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/atrapalo/php-tools/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/atrapalo/php-tools/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/atrapalo/php-tools/?branch=master)

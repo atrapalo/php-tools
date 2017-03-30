@@ -47,9 +47,10 @@ trait EnumPHPDocTester
         if (!empty($methods)) {
 
             $enum = $this->createValidEnum($className);
+            $actualMethod = $this->snakeCaseToCamelCase("IS_".$enum->key());
             foreach ($methods as $method) {
                 $methodName = $method->name();
-                if (stristr($methodName, str_replace('_', '', $enum->key())) !== false) {
+                if ($methodName === $actualMethod) {
                     $this->assertTrue($enum->$methodName());
                 } else {
                     $this->assertFalse($enum->$methodName());
@@ -71,4 +72,14 @@ trait EnumPHPDocTester
         return new $className($values[array_rand($values)]);
     }
 
+    /**
+     * @param string $string
+     * @return string
+     */
+    private function snakeCaseToCamelCase(string $string): string
+    {
+        return preg_replace_callback('/_(.?)/', function($matches) {
+            return ucfirst($matches[1]);
+        }, strtolower($string));
+    }
 }
