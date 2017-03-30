@@ -32,7 +32,7 @@ trait EnumPHPDocTester
                 $this->assertInstanceOf($className, $data);
             }
         } else {
-            $this->markTestSkipped('Skipped because no static methods were found');
+            $this->markTestSkipped('Skipped because no static methods were found for '.get_called_class());
         }
     }
 
@@ -57,7 +57,7 @@ trait EnumPHPDocTester
                 }
             }
         } else {
-            $this->markTestSkipped('Skipped because no methods were found');
+            $this->markTestSkipped('Skipped because no methods were found for '.get_called_class());
         }
     }
 
