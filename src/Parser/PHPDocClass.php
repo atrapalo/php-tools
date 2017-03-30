@@ -22,7 +22,7 @@ class PHPDocClass
         $classDoc = self::docComment($className);
 
         preg_match_all(
-            '/^[*\h]+@method(?>\hstatic)\s?([a-zA-Z0-9_\-\$\\\h]*)\h(\w+)\(([a-zA-Z0-9_\-$,\\\h]*)\)\h?(.*)$/im',
+            '/^[* ]+@method(?>\hstatic) ?([a-zA-Z0-9_\-\$\\\ ]*) (\w+)\(([a-zA-Z0-9_\-$,\\\ ]*)\) ?(.*)$/im',
             $classDoc,
             $staticMethodsOfDoc,
             PREG_SET_ORDER
@@ -40,7 +40,7 @@ class PHPDocClass
         $classDoc = self::docComment($className);
 
         preg_match_all(
-            '/^[*\h]+@method(?!.*static\h)([a-zA-Z0-9_\-\$\\\h]*)\h(\w+)\(([a-zA-Z0-9_\-$,\\\h]*)\)\h?(.*)$/im',
+            '/^[* ]+@method(?!.*static )([a-zA-Z0-9_\-\$\\\ ]*) (\w+)\(([a-zA-Z0-9_\-$,\\\ ]*)\) ?(.*)$/mi',
             $classDoc,
             $staticMethodsOfDoc,
             PREG_SET_ORDER
@@ -69,8 +69,8 @@ class PHPDocClass
     {
         $methods = [];
         foreach ($methodsOfDoc as $methodOfDoc) {
-            $return = isset($methodOfDoc[1]) ? $methodOfDoc[1] : '';
-            $name = isset($methodOfDoc[2]) ? $methodOfDoc[2] : '';
+            $return = isset($methodOfDoc[1]) ? trim($methodOfDoc[1]) : '';
+            $name = isset($methodOfDoc[2]) ? trim($methodOfDoc[2]) : '';
             $params = isset($methodOfDoc[3]) ? self::parseParams($methodOfDoc[3]) : [];
             $description = isset($methodOfDoc[4]) ? trim($methodOfDoc[4]) : '';
 
@@ -97,8 +97,8 @@ class PHPDocClass
             foreach ($paramsSlice as $paramElement) {
                 preg_match('/([\\a-z]*)\h?(\$\w+)/i', $paramElement, $paramData);
                 if (count($paramData) == 3) {
-                    $type = isset($paramData[1]) ? $paramData[1] : '';
-                    $name = isset($paramData[2]) ? $paramData[2] : '';
+                    $type = isset($paramData[1]) ? trim($paramData[1]) : '';
+                    $name = isset($paramData[2]) ? trim($paramData[2]) : '';
 
                     $params[] = new Param($name, $type);
                 }
