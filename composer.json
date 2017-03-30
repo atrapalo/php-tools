@@ -24,6 +24,9 @@
   "require-dev": {
     "phpunit/phpunit": "^5.7 || ^6.0"
   },
+  "bin": [
+    "enum-doc"
+  ],
   "autoload": {
     "psr-4": {
       "Atrapalo\\PHPTools\\": "src/"

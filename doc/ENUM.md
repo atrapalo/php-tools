@@ -113,3 +113,37 @@ class Action extends Enum
     const EDIT = 'edit';
 }
 ```
+
+## PHPDoc IDE Helper
+
+Run the command `enum-doc` passing the complete namespace of your class and will automatically generate the PHPDoc IDE autocomplete
+
+```bash
+$ php enum-doc "Atrapalo\PHPTools\Tests\Enum\DeloreanEnum"
+```
+
+You can paste the output into your Enum class  
+
+```text
+/**
+ * Class DeloreanEnum
+ * @package Atrapalo\PHPTools\Tests\Enum
+ * 
+ * @method static DeloreanEnum foo()
+ * @method static DeloreanEnum bar()
+ * @method static DeloreanEnum number()
+ * @method static DeloreanEnum problematicNumber()
+ * @method static DeloreanEnum problematicNull()
+ * @method static DeloreanEnum problematicEmptyString()
+ * @method static DeloreanEnum problematicBooleanFalse()
+ * 
+ * @method bool isFoo()
+ * @method bool isBar()
+ * @method bool isNumber()
+ * @method bool isProblematicNumber()
+ * @method bool isProblematicNull()
+ * @method bool isProblematicEmptyString()
+ * @method bool isProblematicBooleanFalse()
+ */
+
+```
