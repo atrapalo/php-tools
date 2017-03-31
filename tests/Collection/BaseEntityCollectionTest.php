@@ -51,7 +51,7 @@ abstract class BaseEntityCollectionTest extends TestCase
     {
         $collection = $this->buildCollection($elements);
 
-        $this->assertSame($elements, $collection->toArray());
+        $this->assertSame(array_values($elements), $collection->toArray());
     }
 
     /**
@@ -81,6 +81,7 @@ abstract class BaseEntityCollectionTest extends TestCase
     public function key($elements)
     {
         $collection = $this->buildCollection($elements);
+        $elements = array_values($elements);
 
         $this->assertSame(key($elements), $collection->key());
 
@@ -97,6 +98,7 @@ abstract class BaseEntityCollectionTest extends TestCase
     public function next($elements)
     {
         $collection = $this->buildCollection($elements);
+        $elements = array_values($elements);
 
         while (true) {
             $collectionNext = $collection->next();
@@ -136,7 +138,7 @@ abstract class BaseEntityCollectionTest extends TestCase
     {
         $collection = $this->buildCollection($elements);
 
-        $this->assertSame(array_keys($elements), $collection->keys());
+        $this->assertSame(array_keys(array_values($elements)), $collection->keys());
     }
 
     /**
@@ -168,6 +170,7 @@ abstract class BaseEntityCollectionTest extends TestCase
     public function iterator($elements)
     {
         $collection = $this->buildCollection($elements);
+        $elements = array_values($elements);
 
         $iterations = 0;
         foreach ($collection as $key => $item) {
