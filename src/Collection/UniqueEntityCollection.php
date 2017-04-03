@@ -50,7 +50,7 @@ abstract class UniqueEntityCollection extends EntityCollection
     private function uniqueId($entity): string
     {
         $uniqueId = $this->entityUniqueId($entity);
-        if (empty($uniqueId)) {
+        if ($uniqueId === '') {
             throw static::customInvalidEntityIdException();
         }
 
