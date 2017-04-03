@@ -1,7 +1,8 @@
 <?php
 
-namespace Atrapalo\PHPTools\Enum;
+namespace Atrapalo\PHPTools\Tester\Enum;
 
+use Atrapalo\PHPTools\Enum\Enum;
 use Atrapalo\PHPTools\Parser\PHPDocClass;
 
 /**
@@ -10,12 +11,65 @@ use Atrapalo\PHPTools\Parser\PHPDocClass;
  *
  * @author Guillermo González <guillermo.gonzalez@atrapalo.com>
  */
-trait EnumPHPDocTester
+trait EnumTester
 {
     /**
      * @return string
      */
     abstract protected function enumClass(): string;
+
+    /**
+     * @test
+     */
+    public function invalidConstructor()
+    {
+        /** @var Enum $enumClass */
+        $enumClass = $this->enumClass();
+        $value = md5(openssl_random_pseudo_bytes(32));
+
+        $exception = $enumClass::customInvalidValueException($value);
+
+        $this->expectException(get_class($exception));
+        $this->expectExceptionMessage($exception->getMessage());
+
+        new $enumClass($value);
+    }
+
+    /**
+     * @test
+     */
+    public function callInvalidStaticMethod()
+    {
+        /** @var Enum $enumClass */
+        $enumClass = $this->enumClass();
+        $method = md5(openssl_random_pseudo_bytes(32));
+
+        $exception = $enumClass::customUnknownStaticMethodException($method);
+
+        $this->expectException(get_class($exception));
+        $this->expectExceptionMessage($exception->getMessage());
+
+        call_user_func([$enumClass, $method]);
+    }
+
+    /**
+     * @test
+     */
+    public function callInvalidMethod()
+    {
+        /** @var Enum $enumClass */
+        $enumClass = $this->enumClass();
+
+        $enum = $this->createValidEnum($enumClass);
+        $method = md5(openssl_random_pseudo_bytes(32));
+
+        $exception = $enumClass::customUnknownMethodException($method);
+
+        $this->expectException(get_class($exception));
+        $this->expectExceptionMessage($exception->getMessage());
+
+        $enum->$method();
+    }
 
     /**
      * @test

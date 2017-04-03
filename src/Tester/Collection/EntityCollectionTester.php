@@ -1,6 +1,8 @@
 <?php
 
-namespace Atrapalo\PHPTools\Collection;
+namespace Atrapalo\PHPTools\Tester\Collection;
+
+use Atrapalo\PHPTools\Collection\EntityCollection;
 
 /**
  * Class EntityCollectionTester
@@ -82,23 +84,6 @@ trait EntityCollectionTester
     /**
      * @test
      */
-    public function invalidSetElement()
-    {
-        /** @var EntityCollection $entityCollectionClass */
-        $entityCollectionClass = $this->entityCollectionClass();
-        $exception = $entityCollectionClass::customInvalidEntityException();
-
-        $this->expectException(get_class($exception));
-        $this->expectExceptionMessage($exception->getMessage());
-
-        /** @var EntityCollection $collection */
-        $collection = new $entityCollectionClass([$this->prophesize($entityCollectionClass::entityClass())->reveal()], true);
-        $collection->set('key', []);
-    }
-
-    /**
-     * @test
-     */
     public function validChildrenElementByConstructor()
     {
         /** @var EntityCollection $entityCollectionClass */
@@ -141,7 +126,7 @@ trait EntityCollectionTester
         /** @var \Prophecy\Prophecy\ObjectProphecy $entity */
         $entity = $this->prophesize($entityCollectionClass::entityClass());
         $collection->add($entity->reveal());
-        $collection->set('key', $entity->reveal());
+        $collection->add($entity->reveal());
 
         $this->assertSame(3, $collection->count());
         foreach ($collection as $element) {

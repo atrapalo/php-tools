@@ -34,8 +34,8 @@ abstract class EntityCollection implements \Countable, \Iterator
 
         $this->allowEntitiesChildren = $allowEntitiesChildren;
 
-        foreach ($entities as $key => $entity) {
-            $this->set($key, $entity);
+        foreach ($entities as $entity) {
+            $this->add($entity);
         }
     }
 
@@ -57,7 +57,7 @@ abstract class EntityCollection implements \Countable, \Iterator
      * @param $entity
      * @throws \Exception
      */
-    public function set($key, $entity)
+    protected function set($key, $entity)
     {
         if (!$this->isValid($entity)) {
             throw static::customInvalidEntityException();
@@ -120,6 +120,22 @@ abstract class EntityCollection implements \Countable, \Iterator
     public function toArray(): array
     {
         return $this->entities;
+    }
+
+    /**
+     * @param int  $offset
+     * @param null $length
+     * @return static
+     * @throws \Exception
+     */
+    public function slice(int $offset, $length = null)
+    {
+        $entities = array_slice($this->entities, $offset, $length, true);
+        if (empty($entities)) {
+            throw static::customEmptyException();
+        }
+
+        return new static($entities);
     }
 
     /**

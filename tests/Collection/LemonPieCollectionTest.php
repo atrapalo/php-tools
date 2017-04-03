@@ -2,7 +2,7 @@
 
 namespace Atrapalo\PHPTools\Tests\Collection;
 
-use Atrapalo\PHPTools\Collection\EntityCollectionTester;
+use Atrapalo\PHPTools\Tester\Collection\EntityCollectionTester;
 use PHPUnit\Framework\TestCase;
 
 /**
