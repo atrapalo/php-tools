@@ -202,7 +202,7 @@ abstract class Enum
      */
     public static function customUnknownStaticMethodException(string $method): \Exception
     {
-        throw new \BadMethodCallException("No static method or enum constant '$method' in class " . get_called_class());
+        return new \BadMethodCallException("No static method or enum constant '$method' in class " . get_called_class());
     }
 
     /**
@@ -211,6 +211,6 @@ abstract class Enum
      */
     public static function customUnknownMethodException(string $method): \Exception
     {
-        throw new \BadMethodCallException(sprintf('The method "%s" is not defined.', $method));
+        return new \BadMethodCallException(sprintf('The method "%s" is not defined.', $method));
     }
 }

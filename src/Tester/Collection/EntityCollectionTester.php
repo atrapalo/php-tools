@@ -1,6 +1,8 @@
 <?php
 
-namespace Atrapalo\PHPTools\Collection;
+namespace Atrapalo\PHPTools\Tester\Collection;
+
+use Atrapalo\PHPTools\Collection\EntityCollection;
 
 /**
  * Class EntityCollectionTester

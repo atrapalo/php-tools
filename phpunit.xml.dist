@@ -23,6 +23,7 @@
         <whitelist>
             <directory>./src</directory>
             <exclude>
+                <directory>./src/Tester</directory>
                 <directory>./tests</directory>
                 <directory>./vendor</directory>
             </exclude>

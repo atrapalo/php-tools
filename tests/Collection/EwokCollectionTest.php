@@ -14,7 +14,7 @@ class EwokCollectionTest extends BaseEntityCollectionTest
 {
     /**
      * @param array $elements
-     * @return EntityCollection
+     * @return EwokCollection
      */
     protected function buildCollection(array $elements)
     {
@@ -31,5 +31,17 @@ class EwokCollectionTest extends BaseEntityCollectionTest
             'associative' => [['A' => new Ewok(), 'B' => new Ewok(), 'C' => new Ewok()]],
             'mixed'       => [['A' => new Ewok(), new Ewok(), 'B' => new Ewok(), new Ewok(), new Ewok()]],
         ];
+    }
+
+    /**
+     * @test
+     * @expectedException \UnexpectedValueException
+     */
+    public function setInvalidEntity()
+    {
+        /** @var  $collection */
+        $collection = $this->buildCollection([new Ewok()]);
+
+        $collection->setEntity('key', new \stdClass());
     }
 }

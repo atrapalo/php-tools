@@ -180,4 +180,61 @@ abstract class BaseEntityCollectionTest extends TestCase
 
         $this->assertEquals(count($elements), $iterations, 'Number of iterations not match');
     }
+
+    /**
+     * @test
+     * @dataProvider provideDifferentElements
+     */
+    public function slice($elements)
+    {
+        $collection = $this->buildCollection($elements);
+        $elements = array_values($elements);
+
+        $length = intval(ceil(count($elements)/2));
+        $sliceCollection = $collection->slice(0, $length);
+
+        $this->assertCount($length, $sliceCollection);
+    }
+
+    /**
+     * @test
+     * @dataProvider provideDifferentElements
+     */
+    public function sliceWithOffset($elements)
+    {
+        $collection = $this->buildCollection($elements);
+        $elements = array_values($elements);
+
+        $length = intval(ceil(count($elements)/2));
+        $offset = intval(ceil(count($length)/2));
+        $sliceCollection = $collection->slice($offset, $length);
+
+        $this->assertCount($length, $sliceCollection);
+    }
+
+    /**
+     * @test
+     * @dataProvider provideDifferentElements
+     * @expectedException \LengthException
+     * @expectedExceptionMessage Collection can not be empty
+     */
+    public function sliceEmpty($elements)
+    {
+        $collection = $this->buildCollection($elements);
+
+        $collection->slice(0, 0);
+    }
+
+    /**
+     * @test
+     * @dataProvider provideDifferentElements
+     * @expectedException \LengthException
+     * @expectedExceptionMessage Collection can not be empty
+     */
+    public function sliceEmptyByOffset($elements)
+    {
+        $collection = $this->buildCollection($elements);
+
+        $collection->slice(count($elements), 0);
+    }
 }

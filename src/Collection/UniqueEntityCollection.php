@@ -45,12 +45,13 @@ abstract class UniqueEntityCollection extends EntityCollection
     /**
      * @param $entity
      * @return string
+     * @throws \Exception
      */
     private function uniqueId($entity): string
     {
         $uniqueId = $this->entityUniqueId($entity);
         if (empty($uniqueId)) {
-            throw new \InvalidArgumentException('Entity unique id can not be empty');
+            throw static::customInvalidEntityIdException();
         }
 
         return $uniqueId;
@@ -62,5 +63,14 @@ abstract class UniqueEntityCollection extends EntityCollection
     public static function customDuplicateEntityException(): \Exception
     {
         return new \InvalidArgumentException("Entity already exists in collection");
+    }
+
+
+    /**
+     * @return \Exception
+     */
+    public static function customInvalidEntityIdException(): \Exception
+    {
+        return new \InvalidArgumentException('Entity unique id can not be empty');
     }
 }

@@ -19,4 +19,13 @@ class EwokCollection extends EntityCollection
     {
         return Ewok::class;
     }
+
+    /**
+     * @param $key
+     * @param $entity
+     */
+    public function setEntity($key, $entity)
+    {
+        parent::set($key, $entity);
+    }
 }

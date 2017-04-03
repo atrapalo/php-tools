@@ -2,7 +2,7 @@
 
 namespace Atrapalo\PHPTools\Tests\Enum;
 
-use Atrapalo\PHPTools\Enum\EnumPHPDocTester;
+use Atrapalo\PHPTools\Tester\Enum\EnumTester;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DeloreanEnumTest extends TestCase
 {
-    use EnumPHPDocTester;
+    use EnumTester;
 
     /**
      * @return string
