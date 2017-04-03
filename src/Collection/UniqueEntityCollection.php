@@ -26,7 +26,7 @@ abstract class UniqueEntityCollection extends EntityCollection
             throw self::customDuplicateEntityException();
         }
 
-        $this->set($this->entityUniqueId($entity), $entity);
+        $this->set($this->uniqueId($entity), $entity);
     }
 
     /**
@@ -35,11 +35,25 @@ abstract class UniqueEntityCollection extends EntityCollection
      */
     public function exist($entity): bool
     {
-        if (in_array($this->entityUniqueId($entity), $this->keys())) {
+        if (in_array($this->uniqueId($entity), $this->keys())) {
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @param $entity
+     * @return string
+     */
+    private function uniqueId($entity): string
+    {
+        $uniqueId = $this->entityUniqueId($entity);
+        if (empty($uniqueId)) {
+            throw new \InvalidArgumentException('Entity unique id can not be empty');
+        }
+
+        return $uniqueId;
     }
 
     /**
