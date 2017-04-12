@@ -31,6 +31,10 @@ class MinionCollections extends UniqueEntityCollection
 
 }
 
+/**
+ * Class Minion
+ * @package Atrapalo\PHPTools\Tests\Collection
+ */
 class Minion
 {
     /** @var string */

@@ -1,8 +1,8 @@
 <?php
 
-namespace Atrapalo\PHPTools\Tests\Collection;
+namespace Atrapalo\PHPTools\Tests\Tester\Collection;
 
-use Atrapalo\PHPTools\Collection\EntityCollection;
+use Atrapalo\PHPTools\Collection\EntityStrictCollection;
 
 /**
  * Class LemonPieCollection
@@ -10,7 +10,7 @@ use Atrapalo\PHPTools\Collection\EntityCollection;
  *
  * @author Guillermo González <guillermo.gonzalez@atrapalo.com>
  */
-class LemonPieCollection extends EntityCollection
+class LemonPieCollection extends EntityStrictCollection
 {
     /**
      * @return string

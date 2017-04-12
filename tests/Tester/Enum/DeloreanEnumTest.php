@@ -1,6 +1,6 @@
 <?php
 
-namespace Atrapalo\PHPTools\Tests\Enum;
+namespace Atrapalo\PHPTools\Tests\Tester\Enum;
 
 use Atrapalo\PHPTools\Tester\Enum\EnumTester;
 use PHPUnit\Framework\TestCase;

@@ -26,16 +26,6 @@ abstract class BaseEntityCollectionTest extends TestCase
 
     /**
      * @test
-     * @expectedException \LengthException
-     * @expectedExceptionMessage Collection can not be empty
-     */
-    public function emptyConstruct()
-    {
-        $this->buildCollection([]);
-    }
-
-    /**
-     * @test
      * @expectedException \UnexpectedValueException
      */
     public function invalidElementConstruct()
@@ -47,11 +37,20 @@ abstract class BaseEntityCollectionTest extends TestCase
      * @test
      * @dataProvider provideDifferentElements
      */
-    public function toArray($elements)
+     public function toArray($elements)
     {
         $collection = $this->buildCollection($elements);
-
         $this->assertSame(array_values($elements), $collection->toArray());
+    }
+
+    /**
+     * @test
+     * @dataProvider provideDifferentElements
+     */
+    public function isEmptyCollection($elements)
+    {
+        $collection = $this->buildCollection($elements);
+        $this->assertSame(count($elements) === 0, $collection->isEmpty());
     }
 
     /**
@@ -100,6 +99,10 @@ abstract class BaseEntityCollectionTest extends TestCase
         $collection = $this->buildCollection($elements);
         $elements = array_values($elements);
 
+        if (count($elements) == 0) {
+            $this->markTestSkipped('In empty array it is not necessary test next function');
+        }
+
         while (true) {
             $collectionNext = $collection->next();
             $arrayNext = next($elements);
@@ -137,7 +140,6 @@ abstract class BaseEntityCollectionTest extends TestCase
     public function getKeys($elements)
     {
         $collection = $this->buildCollection($elements);
-
         $this->assertSame(array_keys(array_values($elements)), $collection->keys());
     }
 
@@ -148,7 +150,6 @@ abstract class BaseEntityCollectionTest extends TestCase
     public function getValues($elements)
     {
         $collection = $this->buildCollection($elements);
-
         $this->assertSame(array_values($elements), $collection->values());
     }
 
@@ -159,7 +160,6 @@ abstract class BaseEntityCollectionTest extends TestCase
     public function countElements($elements)
     {
         $collection = $this->buildCollection($elements);
-
         $this->assertSame(count($elements), $collection->count());
     }
 
@@ -215,26 +215,24 @@ abstract class BaseEntityCollectionTest extends TestCase
     /**
      * @test
      * @dataProvider provideDifferentElements
-     * @expectedException \LengthException
-     * @expectedExceptionMessage Collection can not be empty
      */
     public function sliceEmpty($elements)
     {
         $collection = $this->buildCollection($elements);
+        $sliceCollection = $collection->slice(0, 0);
 
-        $collection->slice(0, 0);
+        $this->assertCount(0, $sliceCollection);
     }
 
     /**
      * @test
      * @dataProvider provideDifferentElements
-     * @expectedException \LengthException
-     * @expectedExceptionMessage Collection can not be empty
      */
     public function sliceEmptyByOffset($elements)
     {
         $collection = $this->buildCollection($elements);
+        $sliceCollection = $collection->slice(count($elements), 0);
 
-        $collection->slice(count($elements), 0);
+        $this->assertCount(0, $sliceCollection);
     }
 }

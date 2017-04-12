@@ -2,7 +2,7 @@
 
 namespace Atrapalo\PHPTools\Tester\Collection;
 
-use Atrapalo\PHPTools\Collection\EntityCollection;
+use Atrapalo\PHPTools\Collection\EntityStrictCollection;
 
 /**
  * Class EntityCollectionTester
@@ -10,7 +10,7 @@ use Atrapalo\PHPTools\Collection\EntityCollection;
  *
  * @author Guillermo González <guillermo.gonzalez@atrapalo.com>
  */
-trait EntityCollectionTester
+trait EntityStrictCollectionTester
 {
     /**
      * @return string
@@ -19,12 +19,27 @@ trait EntityCollectionTester
 
     /**
      * @test
+     */
+    public function emptyConstructor()
+    {
+        /** @var EntityStrictCollection $entityCollectionClass */
+        $entityCollectionClass = $this->entityCollectionClass();
+        $exception = $entityCollectionClass::customEmptyException();
+
+        $this->expectException(get_class($exception));
+        $this->expectExceptionMessage($exception->getMessage());
+
+        new $entityCollectionClass([]);
+    }
+
+    /**
+     * @test
      * @dataProvider invalidEntities
      * @param array $elements
      */
     public function invalidElementByConstructor(array $elements)
     {
-        /** @var EntityCollection $entityCollectionClass */
+        /** @var EntityStrictCollection $entityCollectionClass */
         $entityCollectionClass = $this->entityCollectionClass();
         $exception = $entityCollectionClass::customInvalidEntityException();
 
@@ -52,32 +67,17 @@ trait EntityCollectionTester
     /**
      * @test
      */
-    public function emptyConstructor()
-    {
-        /** @var EntityCollection $entityCollectionClass */
-        $entityCollectionClass = $this->entityCollectionClass();
-
-        /** @var EntityCollection $collection */
-        $collection = new $entityCollectionClass();
-
-        $this->assertSame(0, $collection->count());
-        $this->assertTrue($collection->isEmpty());
-    }
-
-    /**
-     * @test
-     */
     public function invalidAddElement()
     {
-        /** @var EntityCollection $entityCollectionClass */
+        /** @var EntityStrictCollection $entityCollectionClass */
         $entityCollectionClass = $this->entityCollectionClass();
         $exception = $entityCollectionClass::customInvalidEntityException();
 
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        /** @var EntityCollection $collection */
-        $collection = new $entityCollectionClass([], true);
+        /** @var EntityStrictCollection $collection */
+        $collection = new $entityCollectionClass([$this->prophesize($entityCollectionClass::entityClass())->reveal()], true);
         $collection->add([]);
     }
 
@@ -86,7 +86,7 @@ trait EntityCollectionTester
      */
     public function validChildrenElementByConstructor()
     {
-        /** @var EntityCollection $entityCollectionClass */
+        /** @var EntityStrictCollection $entityCollectionClass */
         $entityCollectionClass = $this->entityCollectionClass();
         $exception = $entityCollectionClass::customInvalidEntityException();
 
@@ -101,10 +101,10 @@ trait EntityCollectionTester
      */
     public function validElementByConstructor()
     {
-        /** @var EntityCollection $entityCollectionClass */
+        /** @var EntityStrictCollection $entityCollectionClass */
         $entityCollectionClass = $this->entityCollectionClass();
 
-        /** @var EntityCollection $collection */
+        /** @var EntityStrictCollection $collection */
         $collection = new $entityCollectionClass([$this->prophesize($entityCollectionClass::entityClass())->reveal()], true);
 
         $this->assertSame(1, $collection->count());
@@ -116,10 +116,10 @@ trait EntityCollectionTester
      */
     public function addTwoValidElement()
     {
-        /** @var EntityCollection $entityCollectionClass */
+        /** @var EntityStrictCollection $entityCollectionClass */
         $entityCollectionClass = $this->entityCollectionClass();
 
-        /** @var EntityCollection $collection */
+        /** @var EntityStrictCollection $collection */
         $collection = new $entityCollectionClass([$this->prophesize($entityCollectionClass::entityClass())->reveal()], true);
 
 

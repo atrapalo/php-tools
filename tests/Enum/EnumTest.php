@@ -17,14 +17,14 @@ class EnumTest extends TestCase
      */
     public function value()
     {
-        $value = new DeloreanEnum(DeloreanEnum::FOO);
-        $this->assertEquals(DeloreanEnum::FOO, $value->value());
+        $value = new EnumFixture(EnumFixture::FOO);
+        $this->assertEquals(EnumFixture::FOO, $value->value());
 
-        $value = new DeloreanEnum(DeloreanEnum::BAR);
-        $this->assertEquals(DeloreanEnum::BAR, $value->value());
+        $value = new EnumFixture(EnumFixture::BAR);
+        $this->assertEquals(EnumFixture::BAR, $value->value());
 
-        $value = new DeloreanEnum(DeloreanEnum::NUMBER);
-        $this->assertEquals(DeloreanEnum::NUMBER, $value->value());
+        $value = new EnumFixture(EnumFixture::NUMBER);
+        $this->assertEquals(EnumFixture::NUMBER, $value->value());
     }
 
     /**
@@ -32,7 +32,7 @@ class EnumTest extends TestCase
      */
     public function key()
     {
-        $value = new DeloreanEnum(DeloreanEnum::FOO);
+        $value = new EnumFixture(EnumFixture::FOO);
         $this->assertEquals('FOO', $value->key());
         $this->assertNotEquals('BA', $value->key());
     }
@@ -48,10 +48,10 @@ class EnumTest extends TestCase
             \UnexpectedValueException::class
         );
         $this->expectExceptionMessage(
-            'Value \'' . $value . '\' is not part of the enum Atrapalo\PHPTools\Tests\Enum\DeloreanEnum'
+            'Value \'' . $value . '\' is not part of the enum Atrapalo\PHPTools\Tests\Enum\EnumFixture'
         );
 
-        new DeloreanEnum($value);
+        new EnumFixture($value);
     }
 
     /**
@@ -62,13 +62,13 @@ class EnumTest extends TestCase
     public function creatingEnumWithInvalidValueAndCustomException($value)
     {
         $this->expectException(
-            DeloreanClonedEnumUnexpectedValueException::class
+            EnumFixtureClonedUnexpectedValueException::class
         );
         $this->expectExceptionMessage(
-            'Value \'' . $value . '\' is not part of the enum Atrapalo\PHPTools\Tests\Enum\DeloreanClonedEnum'
+            'Value \'' . $value . '\' is not part of the enum Atrapalo\PHPTools\Tests\Enum\EnumFixtureCloned'
         );
 
-        new DeloreanClonedEnum($value);
+        new EnumFixtureCloned($value);
     }
 
     /**
@@ -97,9 +97,9 @@ class EnumTest extends TestCase
      */
     public function toStringProvider() {
         return array(
-            array(DeloreanEnum::FOO, new DeloreanEnum(DeloreanEnum::FOO)),
-            array(DeloreanEnum::BAR, new DeloreanEnum(DeloreanEnum::BAR)),
-            array((string) DeloreanEnum::NUMBER, new DeloreanEnum(DeloreanEnum::NUMBER)),
+            array(EnumFixture::FOO, new EnumFixture(EnumFixture::FOO)),
+            array(EnumFixture::BAR, new EnumFixture(EnumFixture::BAR)),
+            array((string) EnumFixture::NUMBER, new EnumFixture(EnumFixture::NUMBER)),
         );
     }
 
@@ -108,7 +108,7 @@ class EnumTest extends TestCase
      */
     public function keys()
     {
-        $values = DeloreanEnum::keys();
+        $values = EnumFixture::keys();
         $expectedValues = array(
             "FOO",
             "BAR",
@@ -127,15 +127,15 @@ class EnumTest extends TestCase
      */
     public function values()
     {
-        $values = DeloreanEnum::values();
+        $values = EnumFixture::values();
         $expectedValues = array(
-            "FOO"                       => new DeloreanEnum(DeloreanEnum::FOO),
-            "BAR"                       => new DeloreanEnum(DeloreanEnum::BAR),
-            "NUMBER"                    => new DeloreanEnum(DeloreanEnum::NUMBER),
-            "PROBLEMATIC_NUMBER"        => new DeloreanEnum(DeloreanEnum::PROBLEMATIC_NUMBER),
-            "PROBLEMATIC_NULL"          => new DeloreanEnum(DeloreanEnum::PROBLEMATIC_NULL),
-            "PROBLEMATIC_EMPTY_STRING"  => new DeloreanEnum(DeloreanEnum::PROBLEMATIC_EMPTY_STRING),
-            "PROBLEMATIC_BOOLEAN_FALSE" => new DeloreanEnum(DeloreanEnum::PROBLEMATIC_BOOLEAN_FALSE),
+            "FOO"                       => new EnumFixture(EnumFixture::FOO),
+            "BAR"                       => new EnumFixture(EnumFixture::BAR),
+            "NUMBER"                    => new EnumFixture(EnumFixture::NUMBER),
+            "PROBLEMATIC_NUMBER"        => new EnumFixture(EnumFixture::PROBLEMATIC_NUMBER),
+            "PROBLEMATIC_NULL"          => new EnumFixture(EnumFixture::PROBLEMATIC_NULL),
+            "PROBLEMATIC_EMPTY_STRING"  => new EnumFixture(EnumFixture::PROBLEMATIC_EMPTY_STRING),
+            "PROBLEMATIC_BOOLEAN_FALSE" => new EnumFixture(EnumFixture::PROBLEMATIC_BOOLEAN_FALSE),
         );
 
         $this->assertEquals($expectedValues, $values);
@@ -146,15 +146,15 @@ class EnumTest extends TestCase
      */
     public function toArray()
     {
-        $values = DeloreanEnum::toArray();
+        $values = EnumFixture::toArray();
         $expectedValues = array(
-            "FOO"                   => DeloreanEnum::FOO,
-            "BAR"                   => DeloreanEnum::BAR,
-            "NUMBER"                => DeloreanEnum::NUMBER,
-            "PROBLEMATIC_NUMBER"    => DeloreanEnum::PROBLEMATIC_NUMBER,
-            "PROBLEMATIC_NULL"      => DeloreanEnum::PROBLEMATIC_NULL,
-            "PROBLEMATIC_EMPTY_STRING"    => DeloreanEnum::PROBLEMATIC_EMPTY_STRING,
-            "PROBLEMATIC_BOOLEAN_FALSE"    => DeloreanEnum::PROBLEMATIC_BOOLEAN_FALSE,
+            "FOO"                   => EnumFixture::FOO,
+            "BAR"                   => EnumFixture::BAR,
+            "NUMBER"                => EnumFixture::NUMBER,
+            "PROBLEMATIC_NUMBER"    => EnumFixture::PROBLEMATIC_NUMBER,
+            "PROBLEMATIC_NULL"      => EnumFixture::PROBLEMATIC_NULL,
+            "PROBLEMATIC_EMPTY_STRING"    => EnumFixture::PROBLEMATIC_EMPTY_STRING,
+            "PROBLEMATIC_BOOLEAN_FALSE"    => EnumFixture::PROBLEMATIC_BOOLEAN_FALSE,
         );
 
         $this->assertSame($expectedValues, $values);
@@ -165,35 +165,35 @@ class EnumTest extends TestCase
      */
     public function staticAccess()
     {
-        $this->assertEquals(new DeloreanEnum(DeloreanEnum::FOO), DeloreanEnum::foo());
-        $this->assertEquals(new DeloreanEnum(DeloreanEnum::BAR), DeloreanEnum::bar());
-        $this->assertEquals(new DeloreanEnum(DeloreanEnum::NUMBER), DeloreanEnum::number());
-        $this->assertEquals(new DeloreanEnum(DeloreanEnum::PROBLEMATIC_NUMBER), DeloreanEnum::problematicNumber());
-        $this->assertEquals(new DeloreanEnum(DeloreanEnum::PROBLEMATIC_NULL), DeloreanEnum::problematicNull());
-        $this->assertEquals(new DeloreanEnum(DeloreanEnum::PROBLEMATIC_EMPTY_STRING), DeloreanEnum::problematicEmptyString());
-        $this->assertEquals(new DeloreanEnum(DeloreanEnum::PROBLEMATIC_BOOLEAN_FALSE), DeloreanEnum::problematicBooleanFalse());
+        $this->assertEquals(new EnumFixture(EnumFixture::FOO), EnumFixture::foo());
+        $this->assertEquals(new EnumFixture(EnumFixture::BAR), EnumFixture::bar());
+        $this->assertEquals(new EnumFixture(EnumFixture::NUMBER), EnumFixture::number());
+        $this->assertEquals(new EnumFixture(EnumFixture::PROBLEMATIC_NUMBER), EnumFixture::problematicNumber());
+        $this->assertEquals(new EnumFixture(EnumFixture::PROBLEMATIC_NULL), EnumFixture::problematicNull());
+        $this->assertEquals(new EnumFixture(EnumFixture::PROBLEMATIC_EMPTY_STRING), EnumFixture::problematicEmptyString());
+        $this->assertEquals(new EnumFixture(EnumFixture::PROBLEMATIC_BOOLEAN_FALSE), EnumFixture::problematicBooleanFalse());
     }
 
     /**
      * @test
      * @expectedException \BadMethodCallException
      * @expectedExceptionMessage No static method or enum constant 'UNKNOWN' in class
-     *                           UnitTest\MyCLabs\Enum\Enum\DeloreanEnum
+     *                           UnitTest\MyCLabs\Enum\Enum\EnumFixture
      */
     public function badStaticAccess()
     {
-        DeloreanEnum::UNKNOWN();
+        EnumFixture::UNKNOWN();
     }
 
     /**
      * @test
-     * @expectedException \Atrapalo\PHPTools\Tests\Enum\DeloreanClonedEnumBadMethodCallException
+     * @expectedException \Atrapalo\PHPTools\Tests\Enum\EnumFixtureClonedBadMethodCallException
      * @expectedExceptionMessage No static method or enum constant 'UNKNOWN' in class
-     *                           UnitTest\MyCLabs\Enum\Enum\DeloreanClonedEnum
+     *                           UnitTest\MyCLabs\Enum\Enum\EnumFixtureCloned
      */
     public function badStaticAccessCustomException()
     {
-        DeloreanClonedEnum::UNKNOWN();
+        EnumFixtureCloned::UNKNOWN();
     }
 
     /**
@@ -201,20 +201,20 @@ class EnumTest extends TestCase
      */
     public function isAccess()
     {
-        $this->assertTrue((new DeloreanEnum(DeloreanEnum::FOO))->isFoo());
-        $this->assertTrue((new DeloreanEnum(DeloreanEnum::BAR))->isBar());
-        $this->assertTrue((new DeloreanEnum(DeloreanEnum::NUMBER))->isNumber());
-        $this->assertTrue((new DeloreanEnum(DeloreanEnum::PROBLEMATIC_NUMBER))->isProblematicNumber());
-        $this->assertTrue((new DeloreanEnum(DeloreanEnum::PROBLEMATIC_NULL))->isProblematicNull());
-        $this->assertTrue((new DeloreanEnum(DeloreanEnum::PROBLEMATIC_EMPTY_STRING))->isProblematicEmptyString());
-        $this->assertTrue((new DeloreanEnum(DeloreanEnum::PROBLEMATIC_BOOLEAN_FALSE))->isProblematicBooleanFalse());
+        $this->assertTrue((new EnumFixture(EnumFixture::FOO))->isFoo());
+        $this->assertTrue((new EnumFixture(EnumFixture::BAR))->isBar());
+        $this->assertTrue((new EnumFixture(EnumFixture::NUMBER))->isNumber());
+        $this->assertTrue((new EnumFixture(EnumFixture::PROBLEMATIC_NUMBER))->isProblematicNumber());
+        $this->assertTrue((new EnumFixture(EnumFixture::PROBLEMATIC_NULL))->isProblematicNull());
+        $this->assertTrue((new EnumFixture(EnumFixture::PROBLEMATIC_EMPTY_STRING))->isProblematicEmptyString());
+        $this->assertTrue((new EnumFixture(EnumFixture::PROBLEMATIC_BOOLEAN_FALSE))->isProblematicBooleanFalse());
 
-        $this->assertFalse((new DeloreanEnum(DeloreanEnum::FOO))->isBar());
-        $this->assertFalse((new DeloreanEnum(DeloreanEnum::FOO))->isNumber());
-        $this->assertFalse((new DeloreanEnum(DeloreanEnum::FOO))->isProblematicNumber());
-        $this->assertFalse((new DeloreanEnum(DeloreanEnum::FOO))->isProblematicNull());
-        $this->assertFalse((new DeloreanEnum(DeloreanEnum::FOO))->isProblematicEmptyString());
-        $this->assertFalse((new DeloreanEnum(DeloreanEnum::FOO))->isProblematicBooleanFalse());
+        $this->assertFalse((new EnumFixture(EnumFixture::FOO))->isBar());
+        $this->assertFalse((new EnumFixture(EnumFixture::FOO))->isNumber());
+        $this->assertFalse((new EnumFixture(EnumFixture::FOO))->isProblematicNumber());
+        $this->assertFalse((new EnumFixture(EnumFixture::FOO))->isProblematicNull());
+        $this->assertFalse((new EnumFixture(EnumFixture::FOO))->isProblematicEmptyString());
+        $this->assertFalse((new EnumFixture(EnumFixture::FOO))->isProblematicBooleanFalse());
     }
 
     /**
@@ -224,17 +224,17 @@ class EnumTest extends TestCase
      */
     public function badIsAccess()
     {
-        (new DeloreanEnum(DeloreanEnum::FOO))->isUnknown();
+        (new EnumFixture(EnumFixture::FOO))->isUnknown();
     }
 
     /**
      * @test
-     * @expectedException \Atrapalo\PHPTools\Tests\Enum\DeloreanClonedEnumBadMethodCallException
+     * @expectedException \Atrapalo\PHPTools\Tests\Enum\EnumFixtureClonedBadMethodCallException
      * @expectedExceptionMessage The method "isUnknown" is not defined.
      */
     public function badIsAccessCustomException()
     {
-        (new DeloreanClonedEnum(DeloreanEnum::FOO))->isUnknown();
+        (new EnumFixtureCloned(EnumFixture::FOO))->isUnknown();
     }
 
     /**
@@ -245,7 +245,7 @@ class EnumTest extends TestCase
      */
     public function isValid($value, $isValid)
     {
-        $this->assertSame($isValid, DeloreanEnum::isValid($value));
+        $this->assertSame($isValid, EnumFixture::isValid($value));
     }
 
     /**
@@ -274,8 +274,8 @@ class EnumTest extends TestCase
      */
     public function isValidKey()
     {
-        $this->assertTrue(DeloreanEnum::isValidKey('FOO'));
-        $this->assertFalse(DeloreanEnum::isValidKey('BAZ'));
+        $this->assertTrue(EnumFixture::isValidKey('FOO'));
+        $this->assertFalse(EnumFixture::isValidKey('BAZ'));
     }
 
     /**
@@ -286,7 +286,7 @@ class EnumTest extends TestCase
      */
     public function search($value, $expected)
     {
-        $this->assertSame($expected, DeloreanEnum::search($value));
+        $this->assertSame($expected, EnumFixture::search($value));
     }
 
     /**
@@ -309,10 +309,10 @@ class EnumTest extends TestCase
      */
     public function equals()
     {
-        $foo = new DeloreanEnum(DeloreanEnum::FOO);
-        $number = new DeloreanEnum(DeloreanEnum::NUMBER);
-        $anotherFoo = new DeloreanEnum(DeloreanEnum::FOO);
-        $cloneFoo = new DeloreanClonedEnum(DeloreanEnum::FOO);
+        $foo = new EnumFixture(EnumFixture::FOO);
+        $number = new EnumFixture(EnumFixture::NUMBER);
+        $anotherFoo = new EnumFixture(EnumFixture::FOO);
+        $cloneFoo = new EnumFixtureCloned(EnumFixture::FOO);
 
         $this->assertTrue($foo->equals($foo));
         $this->assertFalse($foo->equals($number));
@@ -325,10 +325,10 @@ class EnumTest extends TestCase
      */
     public function equalsComparesProblematicValuesProperly()
     {
-        $false = new DeloreanEnum(DeloreanEnum::PROBLEMATIC_BOOLEAN_FALSE);
-        $emptyString = new DeloreanEnum(DeloreanEnum::PROBLEMATIC_EMPTY_STRING);
-        $null = new DeloreanEnum(DeloreanEnum::PROBLEMATIC_NULL);
-        $cloneNull = new DeloreanClonedEnum(DeloreanEnum::PROBLEMATIC_NULL);
+        $false = new EnumFixture(EnumFixture::PROBLEMATIC_BOOLEAN_FALSE);
+        $emptyString = new EnumFixture(EnumFixture::PROBLEMATIC_EMPTY_STRING);
+        $null = new EnumFixture(EnumFixture::PROBLEMATIC_NULL);
+        $cloneNull = new EnumFixtureCloned(EnumFixture::PROBLEMATIC_NULL);
 
         $this->assertTrue($false->equals($false));
         $this->assertFalse($false->equals($emptyString));

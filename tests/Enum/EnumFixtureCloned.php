@@ -7,13 +7,13 @@ use Atrapalo\PHPTools\Enum\Enum;
 /**
  * Class CloneEnumMock
  *
- * @method static DeloreanClonedEnum foo()
- * @method static DeloreanClonedEnum bar()
- * @method static DeloreanClonedEnum number()
- * @method static DeloreanClonedEnum problematicNumber()
- * @method static DeloreanClonedEnum problematicNull()
- * @method static DeloreanClonedEnum problematicEmptyString()
- * @method static DeloreanClonedEnum problematicBooleanFalse()
+ * @method static EnumFixtureCloned foo()
+ * @method static EnumFixtureCloned bar()
+ * @method static EnumFixtureCloned number()
+ * @method static EnumFixtureCloned problematicNumber()
+ * @method static EnumFixtureCloned problematicNull()
+ * @method static EnumFixtureCloned problematicEmptyString()
+ * @method static EnumFixtureCloned problematicBooleanFalse()
  *
  * @method bool isFoo()
  * @method bool isBar()
@@ -25,7 +25,7 @@ use Atrapalo\PHPTools\Enum\Enum;
  *
  * @author Guillermo González <guillermo.gonzalez@atrapalo.com>
  */
-class DeloreanClonedEnum extends Enum
+class EnumFixtureCloned extends Enum
 {
     const FOO = "foo";
     const BAR = "bar";
@@ -45,7 +45,7 @@ class DeloreanClonedEnum extends Enum
      */
     public static function customInvalidValueException(string $value): \Exception
     {
-        return new DeloreanClonedEnumUnexpectedValueException("Value '$value' is not part of the enum " . get_called_class());
+        return new EnumFixtureClonedUnexpectedValueException("Value '$value' is not part of the enum " . get_called_class());
     }
 
     /**
@@ -54,7 +54,7 @@ class DeloreanClonedEnum extends Enum
      */
     public static function customUnknownStaticMethodException(string $method): \Exception
     {
-        throw new DeloreanClonedEnumBadMethodCallException("No static method or enum constant '$method' in class " . get_called_class());
+        throw new EnumFixtureClonedBadMethodCallException("No static method or enum constant '$method' in class " . get_called_class());
     }
 
     /**
@@ -63,14 +63,14 @@ class DeloreanClonedEnum extends Enum
      */
     public static function customUnknownMethodException(string $method): \Exception
     {
-        throw new DeloreanClonedEnumBadMethodCallException(sprintf('The method "%s" is not defined.', $method));
+        throw new EnumFixtureClonedBadMethodCallException(sprintf('The method "%s" is not defined.', $method));
     }
 }
 
-class DeloreanClonedEnumUnexpectedValueException extends \UnexpectedValueException
+class EnumFixtureClonedUnexpectedValueException extends \UnexpectedValueException
 {
 }
 
-class DeloreanClonedEnumBadMethodCallException extends \BadMethodCallException
+class EnumFixtureClonedBadMethodCallException extends \BadMethodCallException
 {
 }
