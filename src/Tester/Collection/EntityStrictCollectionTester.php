@@ -84,21 +84,6 @@ trait EntityStrictCollectionTester
     /**
      * @test
      */
-    public function validChildrenElementByConstructor()
-    {
-        /** @var EntityStrictCollection $entityCollectionClass */
-        $entityCollectionClass = $this->entityCollectionClass();
-        $exception = $entityCollectionClass::customInvalidEntityException();
-
-        $this->expectException(get_class($exception));
-        $this->expectExceptionMessage($exception->getMessage());
-
-        new $entityCollectionClass([$this->prophesize($entityCollectionClass::entityClass())->reveal()]);
-    }
-
-    /**
-     * @test
-     */
     public function validElementByConstructor()
     {
         /** @var EntityStrictCollection $entityCollectionClass */
