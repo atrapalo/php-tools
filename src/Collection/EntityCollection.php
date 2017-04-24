@@ -24,14 +24,9 @@ abstract class EntityCollection implements \Countable, \Iterator
      * Collection constructor.
      * @param array $entities
      * @param bool  $allowEntitiesChildren
-     * @throws \Exception
      */
-    public function __construct(array $entities, bool $allowEntitiesChildren = false)
+    public function __construct(array $entities = array(), bool $allowEntitiesChildren = false)
     {
-        if (empty($entities)) {
-            throw static::customEmptyException();
-        }
-
         $this->allowEntitiesChildren = $allowEntitiesChildren;
 
         foreach ($entities as $entity) {
@@ -83,6 +78,14 @@ abstract class EntityCollection implements \Countable, \Iterator
     }
 
     /**
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        return $this->count() === 0;
+    }
+
+    /**
      * @return array
      */
     public function keys(): array
@@ -126,16 +129,12 @@ abstract class EntityCollection implements \Countable, \Iterator
      * @param int  $offset
      * @param null $length
      * @return static
-     * @throws \Exception
      */
     public function slice(int $offset, $length = null)
     {
         $entities = array_slice($this->entities, $offset, $length, true);
-        if (empty($entities)) {
-            throw static::customEmptyException();
-        }
 
-        return new static($entities);
+        return new static($entities, $this->allowEntitiesChildren);
     }
 
     /**
@@ -181,14 +180,6 @@ abstract class EntityCollection implements \Countable, \Iterator
     public function count(): int
     {
         return count($this->entities);
-    }
-
-    /**
-     * @return \Exception
-     */
-    public static function customEmptyException(): \Exception
-    {
-        return new \LengthException('Collection can not be empty');
     }
 
     /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Atrapalo\PHPTools\Tests\Collection;
+namespace Atrapalo\PHPTools\Tests\Tester\Collection;
 
-use Atrapalo\PHPTools\Tester\Collection\EntityCollectionTester;
+use Atrapalo\PHPTools\Tester\Collection\EntityStrictCollectionTester;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class LemonPieCollectionTest extends TestCase
 {
-    use EntityCollectionTester;
+    use EntityStrictCollectionTester;
 
     /**
      * @return string

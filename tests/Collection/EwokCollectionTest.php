@@ -2,15 +2,13 @@
 
 namespace Atrapalo\PHPTools\Tests\Collection;
 
-use Atrapalo\PHPTools\Collection\EntityCollection;
-
 /**
  * Class EwokCollectionTest
  * @package Atrapalo\PHPTools\Tests\Collection
  *
  * @author Guillermo González <guillermo.gonzalez@atrapalo.com>
  */
-class EwokCollectionTest extends BaseEntityCollectionTest
+class EwokCollectionTest extends BaseEntityStrictCollectionTest
 {
     /**
      * @param array $elements

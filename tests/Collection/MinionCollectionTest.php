@@ -4,7 +4,13 @@ namespace Atrapalo\PHPTools\Tests\Collection;
 
 use PHPUnit\Framework\TestCase;
 
-class UniqueEntityCollectionTest extends TestCase
+/**
+ * Class MinionCollectionTest
+ * @package Atrapalo\PHPTools\Tests\Collection
+ *
+ * @author Guillermo González <guillermo.gonzalez@atrapalo.com>
+ */
+class MinionCollectionTest extends TestCase
 {
     /**
      * @return string

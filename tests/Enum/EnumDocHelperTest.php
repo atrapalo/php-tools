@@ -68,20 +68,20 @@ class EnumDocHelperTest extends TestCase
      */
     public function createValidEnumClass()
     {
-        $_SERVER['argv'][1] = 'Atrapalo\PHPTools\Tests\Enum\DeloreanEnum';
+        $_SERVER['argv'][1] = 'Atrapalo\PHPTools\Tests\Enum\EnumFixture';
         EnumDocHelper::main();
 
         $this->assertSame('/**
- * Class DeloreanEnum
+ * Class EnumFixture
  * @package Atrapalo\PHPTools\Tests\Enum
  * 
- * @method static DeloreanEnum foo()
- * @method static DeloreanEnum bar()
- * @method static DeloreanEnum number()
- * @method static DeloreanEnum problematicNumber()
- * @method static DeloreanEnum problematicNull()
- * @method static DeloreanEnum problematicEmptyString()
- * @method static DeloreanEnum problematicBooleanFalse()
+ * @method static EnumFixture foo()
+ * @method static EnumFixture bar()
+ * @method static EnumFixture number()
+ * @method static EnumFixture problematicNumber()
+ * @method static EnumFixture problematicNull()
+ * @method static EnumFixture problematicEmptyString()
+ * @method static EnumFixture problematicBooleanFalse()
  * 
  * @method bool isFoo()
  * @method bool isBar()

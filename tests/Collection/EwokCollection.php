@@ -2,7 +2,7 @@
 
 namespace Atrapalo\PHPTools\Tests\Collection;
 
-use Atrapalo\PHPTools\Collection\EntityCollection;
+use Atrapalo\PHPTools\Collection\EntityStrictCollection;
 
 /**
  * Class EwokCollection
@@ -10,7 +10,7 @@ use Atrapalo\PHPTools\Collection\EntityCollection;
  *
  * @author Guillermo González <guillermo.gonzalez@atrapalo.com>
  */
-class EwokCollection extends EntityCollection
+class EwokCollection extends EntityStrictCollection
 {
     /**
      * @return string
