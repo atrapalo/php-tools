@@ -61,7 +61,7 @@ abstract class Enum
      * @param Enum $enum
      * @return bool True if Enums are equal, false if not equal
      */
-    final public function equals(Enum $enum): bool
+    public function equals(Enum $enum): bool
     {
         return $this->value() === $enum->value() && static::class === get_class($enum);
     }
