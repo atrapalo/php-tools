@@ -16,13 +16,11 @@ abstract class EntityStrictCollection extends EntityCollection
      * @param bool  $allowEntitiesChildren
      * @throws \Exception
      */
-    public function __construct(array $entities, bool $allowEntitiesChildren = false)
+    public function __construct(array $entities)
     {
         if (empty($entities)) {
             throw static::customEmptyException();
         }
-
-        $this->allowEntitiesChildren = $allowEntitiesChildren;
 
         foreach ($entities as $entity) {
             $this->add($entity);

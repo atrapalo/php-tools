@@ -12,8 +12,6 @@ abstract class EntityCollection implements \Countable, \Iterator
 {
     /** @var array */
     private $entities = array();
-    /** @var bool */
-    protected $allowEntitiesChildren;
 
     /**
      * @return string
@@ -25,10 +23,8 @@ abstract class EntityCollection implements \Countable, \Iterator
      * @param array $entities
      * @param bool  $allowEntitiesChildren
      */
-    public function __construct(array $entities = array(), bool $allowEntitiesChildren = false)
+    public function __construct(array $entities = array())
     {
-        $this->allowEntitiesChildren = $allowEntitiesChildren;
-
         foreach ($entities as $entity) {
             $this->add($entity);
         }
@@ -69,12 +65,7 @@ abstract class EntityCollection implements \Countable, \Iterator
     {
         if (!is_object($entity)) return false;
 
-        $entityClass = $this->allowEntitiesChildren ? get_parent_class($entity) : get_class($entity);
-        if ($entityClass === static::entityClass()){
-            return true;
-        }
-
-        return false;
+        return is_a($entity, static::entityClass());
     }
 
     /**
@@ -134,7 +125,7 @@ abstract class EntityCollection implements \Countable, \Iterator
     {
         $entities = array_slice($this->entities, $offset, $length, true);
 
-        return new static($entities, $this->allowEntitiesChildren);
+        return new static($entities);
     }
 
     /**
